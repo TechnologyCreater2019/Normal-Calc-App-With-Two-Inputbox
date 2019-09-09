@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        
+        // document.querySelector('#clear').addEventListener('click',()=>{ 
+        //     document.querySelector('#t1').value='';
+        //     document.querySelector('#t2').value='';
+        // });
+        function calc(operand) {
+            var a = parseInt(document.querySelector('#t1').value);
+            var b = parseInt(document.querySelector('#t2').value);
+            var sum = a + operand + b;
+            document.querySelector('#result').innerText = eval(sum);
+        }
+        
+    </script>
+</head>
+
+<body>
+
+    <h1>Normal Calc App With Two Input</h1>
+    <label for="">First Number</label>
+    <input id='t1' type="text" placeholder="Type First Number">
+    <br>
+    <label for="">Second Number</label>
+    <input id='t2' type="text" placeholder="Type Second Number">
+    <br>
+    <button onclick="calc('+')">+</button>
+    <button onclick="calc('-')">-</button>
+    <button onclick="calc('*')">*</button>
+    <button onclick="calc('/')">/</button>
+    <button id='clear'>Clear All</button>
+    <h1>Calc Result is <span id='result'></span></h1>
+</body>
+
+</html>
