@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calc</title>
+
+    <script>
+
+        window.addEventListener("load", bindEvents);
+
+        function bindEvents() {
+            document.querySelector('#equal').addEventListener('click', compute); // #equal is id of eualto button and addEventListener is calling function compute on click
+
+            var a = document.querySelectorAll('button');     // store all button value in variable a
+            a.forEach(button => {                           // using foreach loop in a  
+                if (button.id != 'equal' && button.id != 'clear') {
+                    button.addEventListener('click', takeValue);
+                }
+            });
+            function takeValue() {
+                document.querySelector('#txt').value += this.innerText; 
+            }
+            function compute() {
+                document.querySelector('#txt').value = eval(document.querySelector('#txt').value);
+                var calc = document.querySelector('#txt').value;
+                document.querySelector('#result').innerText = calc;
+            }
+            document.querySelector('#clear').addEventListener('click', () => {
+                document.querySelector('#txt').value = '';
+                document.querySelector('#txt').focus();
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Normal Calc App With One Input Box</h1>
+    <input type="text" id='txt' placeholder="Enter Value">
+    <table>
+        <tr>
+            <td><button>7</button></td>
+            <td><button>8</button></td>
+            <td><button>9</button></td>
+            <td><button>+</button></td>
+        </tr>
+        <tr>
+            <td><button>6</button></td>
+            <td><button>5</button></td>
+            <td><button>4</button></td>
+            <td><button>-</button></td>
+        </tr>
+        <tr>
+            <td><button>3</button></td>
+            <td><button>2</button></td>
+            <td><button>1</button></td>
+            <td><button>*</button></td>
+        </tr>
+        <tr>
+            <td><button>0</button></td>
+            <td><button id='clear'>C</button></td>
+            <td><button>.</button></td>
+            <td><button id='equal'>=</button></td>
+        </tr>
+        <h1>Result is <span id='result'> </span> </h1>
+    </table>
+
+</body>
+
+</html>
